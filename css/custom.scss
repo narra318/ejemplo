@@ -1,0 +1,162 @@
+// Lux 5.2.2
+// Bootswatch
+
+$theme: "lux" !default;
+
+//
+// Color system
+//
+
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #f7f7f9 !default;
+$gray-300: #eceeef !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #919aa1 !default;
+$gray-700: #55595c !default;
+$gray-800: #343a40 !default;
+$gray-900: #1a1a1a !default;
+$black:    #000 !default;
+
+$blue:    #007bff !default;
+$indigo:  #26111D !default;
+$purple:  #6f42c1 !default;
+$bag:     #B9B4BF !default;
+$red:     #d9534f !default;
+$orange:  #fd7e14 !default;
+$yellow:  #f0ad4e !default;
+$green:   #4bbf73 !default;
+$teal:    #20c997 !default;
+$cyan:    #88456a !default;
+
+$primary:       $indigo !default;
+$secondary:     $bag !default;
+$info:          $cyan !default;
+$success:       $green !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $white !default;
+$dark:          $black !default;
+
+$min-contrast-ratio:   2.3 !default;
+
+// Options
+
+$enable-rounded:            false !default;
+
+// Body
+
+$body-color:                $gray-700 !default;
+
+// Fonts
+
+// stylelint-disable-next-line value-keyword-case
+$font-family-sans-serif:      "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$h1-font-size:                2rem !default;
+$h2-font-size:                1.75rem !default;
+$h3-font-size:                1.5rem !default;
+$h4-font-size:                1.25rem !default;
+$h5-font-size:                1rem !default;
+$h6-font-size:                .75rem !default;
+$headings-font-weight:        600 !default;
+$headings-color:              $gray-900 !default;
+
+// Tables
+
+$table-border-color:          rgba(0, 0, 0, .05) !default;
+
+// Buttons + Forms
+
+$input-btn-border-width:      0 !default;
+
+// Buttons
+
+$btn-line-height:             1.5rem !default;
+$input-btn-padding-y:         .75rem !default;
+$input-btn-padding-x:         1.5rem !default;
+$input-btn-padding-y-sm:      .5rem !default;
+$input-btn-padding-x-sm:      1rem !default;
+$input-btn-padding-y-lg:      2rem !default;
+$input-btn-padding-x-lg:      2rem !default;
+$btn-font-weight:             600 !default;
+
+// Forms
+
+$input-line-height:                     1.5 !default;
+$input-bg:                              $gray-200 !default;
+$input-disabled-bg:                     $gray-300 !default;
+$input-group-addon-bg:                  $gray-300 !default;
+
+// Navbar
+
+$navbar-padding-y:                  1.5rem !default;
+$navbar-dark-hover-color:           $white !default;
+$navbar-light-color:                rgba($black, .3) !default;
+$navbar-light-hover-color:          $gray-900 !default;
+$navbar-light-active-color:         $gray-900 !default;
+
+// Pagination
+
+$pagination-border-color:           transparent !default;
+$pagination-hover-border-color:     $pagination-border-color !default;
+$pagination-disabled-border-color:  $pagination-border-color !default;
+
+@import "../libs/bootstrap/scss/bootstrap";
+
+@font-face {
+    font-family: Hand;
+    src: url('./fuentes/Handlee-Regular.ttf');
+}
+
+@font-face {
+    font-family: Velvet;
+    src: url('./fuentes/Red-Velvet.otf');
+}
+
+@font-face {
+    font-family: Christmas;
+    src: url('./fuentes/Christmas\ Vintage.otf');
+}
+
+@font-face {
+    font-family: didact;
+    src: url("./fuentes/DidactGothic-Regular.ttf");
+}
+
+@font-face {
+    font-family: Sun;
+    src: url("./fuentes/Sun.otf");
+}
+
+*{
+    font-family: didact;
+}
+
+#Titulo1{
+    font-family: Velvet;
+    font-size: 57px;
+    // -webkit-text-stroke: 1px #8d4b70;
+    color: #53213d;
+}
+
+#Titulo2{
+    font-family: Hand;
+    font-size: 47px;
+    color: #88456a
+}
+
+#Titulo3{
+    font-family: Sun;
+    font-size: 47px;
+    // -webkit-text-stroke: 1px rgb(0, 0, 0);
+    // text-shadow: #fff 10 10 10;
+    color: #fff
+}
+
+/* Autor estilo */
+#Titulo4 { 
+    font-family: Hand;
+    font-size: 35px;
+    color: #53213d;
+  }
