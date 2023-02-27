@@ -33,7 +33,7 @@
             INNER JOIN editorial ON libro.idEditorial = editorial.idEditorial  
             INNER JOIN tematica ON libro.idTematica = tematica.idTematica  
             INNER JOIN categoria ON libro.idCategoria = categoria.idCategoria  
-            where idLibro =$id";
+            where idLibro =$id AND idEstado='1'";
 
             $resulset = $con->query($sql);
 
@@ -87,7 +87,7 @@
                             <input type="hidden" name="cantidad" id="cantidad" value="1">
 
                             <div class="text-end">
-                                <a class="btn btn-outline-primary border border-primary" href="<?php echo $_SERVER['HTTP_REFERER'] ?>" type="button"> Volver </a>
+                                <a class="btn btn-outline-primary border border-primary" onclick="history.back()" type="button"> Volver </a>
                                 <button class="btn btn-primary" id="añadir" onclick="anadir()" type="submit">Añadir &nbsp; <i class="bi bi-cart-plus"></i> </button>
                             </div>
                         </form>

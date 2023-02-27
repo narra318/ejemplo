@@ -30,7 +30,7 @@ class Registro{
         } 
         else{
             $sql = "INSERT INTO usuario(nombreUsuario, apellidoUsuario, correoUsuario, idRol, usuario, contrasenaUsuario, idEstado, idPais) 
-            VALUES('" . htmlentities($_POST['nombre']) . "','" . htmlentities($_POST['apellido']) . "','" . htmlentities($_POST['correo']) . "','" . $_POST['rol'] . "','" . htmlentities($_POST['usuario']) . "','" . $contrasena . "','1','" . $_POST['pais'] . "');";
+            VALUES('" . htmlentities($_POST['nombre']) . "','" . htmlentities($_POST['apellido']) . "','" . htmlentities($_POST['correo']) . "','" . $_POST['rol'] . "','" . htmlentities($_POST['usuario']) . "','" . $contrasena . "','1','241');";
 
             if ($con->query($sql) === TRUE) {
                 $_SESSION["creado"] = "Se ha creado el usuario exitosamente";

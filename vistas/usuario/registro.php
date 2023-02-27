@@ -34,17 +34,7 @@
             '</div>';
 
             unset($_SESSION["ErrorDB"]);
-        }
-
-        if(isset($_SESSION["Status"])){
-            echo '<div class="alert alert-success m-0">
-            <strong> Exito:</strong> ';
-            echo $_SESSION["Status"];
-            echo '</div>';
-            
-            unset($_SESSION["Status"]);
-        }
-    
+        }  
     ?>
 
 <div class="body">
@@ -113,7 +103,7 @@
                 
                 <div class="text-center mt-5 mb-4 d-grid">
                     <div class="btn-group mt-2 mb-2">
-                        <button type="submit" class="btn btn-primary border border-dark rounded ms-5"> Registrarse <i class="bi bi-person-plus ms-3"></i> </button>
+                        <button type="submit" class="btn btn-primary border border-dark rounded ms-5"> Registrarse <i class="bi bi-person-plus-fill ms-3"></i> </button>
                         <a type="button" href="index.php" class="btn btn-outline-primary border border-primary rounded ms-4 me-5">  Volver  </a>
                     </div>
                 </div>

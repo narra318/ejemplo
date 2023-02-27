@@ -58,12 +58,6 @@
         <p id="Titulo3" class="text-center"> Modificar Usuarios </p>
         <p class="text-white text-center"> Por favor seleccione un usuario </p>
 
-        <div class="text-end m-4 ">
-            <!-- <span id="Link"><input type="submit" value="<?php //echo $in=1; $f=10; ?>" class="btn"> Página 1 </input></span>
-             -->
-            <a type="button" id="regresar" name="regresar" onclick="history.back()" class="btn btn-light border border-light rounded"> Volver </a>
-        </div>
-
         <div class="overflow-auto">
         <table class="table overflow-auto">
             <thead>

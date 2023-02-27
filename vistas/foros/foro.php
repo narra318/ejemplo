@@ -45,7 +45,7 @@
 	</head>
 
 	<body class="bg-secondary">
-		<?php include '../../modules/menu-footer.php'; echo $idUsuario; echo $_SESSION["Status"]; ?>
+		<?php include '../../modules/menu-footer.php'; ?>
 		<?= menu("../.."); ?>
 
 		<div class="container">

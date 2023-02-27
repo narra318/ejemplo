@@ -16,27 +16,35 @@
 echo '<div class="container">
     <div class="row justify-content-center overflow-auto">
         <div class="col-md text-center text-white">
-                <table class="table bg-dark border border-primary bg-opacity-75 rounded mt-3">
-                    <tr class="text-white bg-info bg-opacity-75"> 
-                        <th class="border border-info"> ID </th>
-                        <th class="border border-info"> Estado </th>
-                        <th class="border border-info"> Usuario </th>
-                        <th class="border border-info"> Nombre </th>
-                        <th class="border border-info"> Apellido </th>
-                        <th class="border border-info"> Correo </th>
-                        <th class="border border-info"> Pais </th>
-                    </tr>';
+            <table class="table bg-dark border border-primary bg-opacity-75 rounded mt-3">
+                <tr class="text-white bg-info bg-opacity-75"> 
+                    <th class="border border-info"> ID </th>
+                    <th class="border border-info"> Estado </th>
+                    <th class="border border-info"> Usuario </th>
+                    <th class="border border-info"> Nombre </th>
+                    <th class="border border-info"> Apellido </th>
+                    <th class="border border-info"> Correo </th>
+                </tr>';
                     
-             while($stmt -> fetch()){
-              echo "<tr class='linea bg-dark text-secondary bg-dark'>
+            while($stmt -> fetch()){
+              echo "<tr class='linea bg-dark text-secondary'>
                         <td class='border border-info'> ".$idUsuario." </td>
                         <td class='border border-info'> ".$Estado." </td>
                         <td class='border border-info'> ".$usuario." </td>
                         <td class='border border-info'> ".$nombre." </td>
                         <td class='border border-info'> ".$apellido." </td>
                         <td class='border border-info'> ".$correo." </td>
-                        <td class='border border-info'> ".$pais." </td>
-                    </tr>";}
-                    $stmt -> close();
-           echo "</table>";
+                    </tr>";
+            }
+                    
+           echo "</table></div></div></div>";
+           echo '<script>
+                    $(".linea").mouseover(function(){
+                        $(this).attr("class", "bg-primary text-white bg-opacity-75");
+                    });
+                    $(".linea").mouseout(function() {
+                        $(this).attr("class", "bg-dark text-secondary bg-dark p-0");
+                    });
+                </script>';
+           $stmt -> close();
 ?>

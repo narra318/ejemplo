@@ -31,3 +31,12 @@
     border: 1px solid var(--primary);
     box-shadow: -5px -5px 15px var(--info);
 }
+
+.containerLoginAd
+{
+    padding: 10em;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.63);
+    box-shadow: -5px -5px 17px white;
+    background-color: rgba(0, 0, 0, 0.5);
+}

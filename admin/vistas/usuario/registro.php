@@ -18,7 +18,6 @@
     <link rel="shortcut icon" href="../../../img/icono2.png" type="image/ico" />
     <link rel="stylesheet" href="../../../css/custom.css">
     <link rel="stylesheet" href="../../../css/style2.css">
-    <script src="../../../js/bootstrap.bundle.min.js"> </script>
     <link href="../../../libs/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <style>
         body {
@@ -39,7 +38,7 @@
     </style>
 </head>
 
-<body class="bg-info ">
+<body class="bg-dark">
     <?php include '../../../modules/menu-footer.php'; ?>
     <?= menuAdmin("../../../"); ?>
 
@@ -67,15 +66,17 @@
 
     <p id="Titulo3" class="text-center text-light mt-5"> Añadir Usuarios <i class="bi bi ms-2"></i> </p>
 
-    <div class="container-fluid justify-content-center">
+    <div class="container justify-content-center">
         <form action="../../codigo/usuario/registro.php" method="post" name="registro">
 
             <div class="row justify-content-center">
-                <div class="col-md-6 p-5 justify-content-center">
+
+                <div class="col-lg-6 justify-content-center">
                     <div class="form-floating m-4">
                         <input type="text" placeholder="Ingrese su nombre" class="form-control bg-dark bg-opacity-75 text-light border-bottom border-light" name="nombre" id="nombre" required>
                         <label for="nombre" class="text-light">Nombre</label>
                     </div>
+
                     <div class="form-floating m-4">
                         <input type="text" placeholder="Ingrese su apellido" name="apellido" id="apellido" class="form-control bg-dark bg-opacity-75 text-light border-bottom border-light" required>
                         <label for="apellido" class="text-light">Apellido</label>
@@ -86,15 +87,14 @@
                         <label for="correo" class="text-light">Correo</label>
                         <?php
                             if (isset($_SESSION["Correo"])) {
-                                echo '<div class="alert alert-danger m-0">
-                                    <strong>ERROR:</strong> ';
+                                echo "<script> alert('";
                                 echo $_SESSION["Correo"];
-                                '</div>';
+                                echo "');</script>";
                                 unset($_SESSION["Correo"]);
                             }
                         ?>
                     </div>
-
+                        
                     <div class="form-floating m-4">
                         <select name="rol" id="rol" class="form-control bg-dark bg-opacity-50 text-light border-bottom border-light" required>
                             <option value="" selected="true" disabled> Selecione un rol</option>
@@ -112,14 +112,13 @@
                             }
                             echo "</select>";
                             ?>
-                            <label for="">Rol</label>
+                            <label for="rol">Rol</label>
                     </div>
                 </div>
 
-                <div class="col-md-6 p-5 justify-content-center ">
+                <div class="col-lg-6 justify-content-center ">
                     <div class="form-floating m-4">
                         <input type="text" placeholder="Ingrese su usuario" name="usuario" id="usuario" class="form-control bg-dark bg-opacity-75 text-light border-bottom border-light" required>
-                        <label for="usuario" class="text-light">Usuario</label>
                         <?php
                             if (isset($_SESSION["user"])) {
                                 echo '<div class="alert alert-danger m-0">
@@ -128,7 +127,8 @@
                                 '</div>';
                                 unset($_SESSION["user"]);
                             }
-                        ?>
+                        ?><label for="usuario" class="text-light">Usuario</label>
+                        
                     </div>
 
                     <div class="form-floating m-4">
@@ -140,35 +140,18 @@
                         <input type="password" placeholder="Ingrese su contraseña" name="pass2" id="pass2" class="form-control bg-dark bg-opacity-75 text-light border-bottom border-light" required>
                         <label for="pass" class="text-light">Validar Contraseña</label>
                     </div>
-
-
-                    <div class="form-floating m-4">
-                        <select name="pais" id="pais" class="form-control bg-dark bg-opacity-75 text-light border-bottom border-light" required>
-                            <option value="" selected="true" disabled>Selecione el pais</option>
-                            <?php
-                            $sql2 = "SELECT * from pais ORDER BY nombrePais ASC";
-                            $resultado_consulta_mysql = mysqli_query($conexion, $sql2);
-
-                            while ($fila = mysqli_fetch_array($resultado_consulta_mysql)) {
-                                $idPais = $fila['idPais'];
-                                $nombrePais = $fila['nombrePais'];
-                                echo "<option value='" . $idPais . "'> " . $nombrePais  . "</option>";
-                            }
-                            echo "</select>";
-                            ?>
-                            <label for="pais">Nombre del pais</label>
-                    </div>
                 </div>
             </div>
-            <div class="text-center m-4">
-                <button type="submit" id="enviar" class="btn btn-outline-light border rounded">Registrarse</button>
-                <a type="button" id="regresar" name="regresar" onclick="history.back()" class="btn btn-outline-light border border-light rounded"> Volver </a>
+            <div class="text-end mb-4 mt-2 me-4">
+                <button type="submit" id="enviar" class="btn btn-light rounded">Registrarse</button>
+                <a type="button" id="regresar" name="regresar" onclick="history.back()" class="btn btn-light rounded"> Volver </a>
             </div>
 
         </form>
     </div>
     </div>
-
+    
+    <script src="../../../js/bootstrap.bundle.min.js"> </script>
     <script src="../../../js/script/validar-password.js"></script>
 </body>
 

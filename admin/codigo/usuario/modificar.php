@@ -1,41 +1,41 @@
 <?php
-session_start();
-if (!isset($_SESSION['Admin'])) {
-    header('Location: ../../index.php');
-}
+    ob_start();
+    session_start();
+    if (!isset($_SESSION['Admin'])) {
+        header('Location: ../../');
+    }
 
-include "../../codigo/controller/conexion.php";
-$con = new Configuracion;
-$conexion = $con->conectarDB();
+    include "../../codigo/controller/conexion.php";
+    $con = new Configuracion;
+    $conexion = $con->conectarDB();
 
-$id = $_GET['id'];
-$sql = "SELECT usuario.idUsuario, usuario.nombreUsuario, usuario.apellidoUsuario, usuario.correoUsuario, 
-        roles.rolUsuario, usuario.idRol, usuario.usuario, usuario.idEstado, usuario.idPais, estado.estado, pais.nombrePais FROM usuario 
-        INNER JOIN pais ON usuario.idPais = pais.idPais 
-        INNER JOIN estado ON usuario.idEstado = estado.idEstado 
-        INNER JOIN roles ON usuario.idRol = roles.idRol 
-    WHERE idUsuario='$id' LIMIT 21;";
-$modificar = $conexion->query($sql);
-$dato = $modificar->fetch_array();
+    $id = $_GET['id'];
+    $sql = "SELECT usuario.idUsuario, usuario.nombreUsuario, usuario.apellidoUsuario, usuario.correoUsuario, 
+            roles.rolUsuario, usuario.idRol, usuario.usuario, usuario.idEstado, usuario.idPais, estado.estado, pais.nombrePais FROM usuario 
+            INNER JOIN pais ON usuario.idPais = pais.idPais 
+            INNER JOIN estado ON usuario.idEstado = estado.idEstado 
+            INNER JOIN roles ON usuario.idRol = roles.idRol 
+        WHERE idUsuario='$id' LIMIT 21;";
+    $modificar = $conexion->query($sql);
+    $dato = $modificar->fetch_array();
 
-if (isset($_POST['modificar'])) {
-    $id = $_POST['id'];
-    $idUsuario = $conexion->real_escape_string($_POST['idUsuario']);
-    $Rol = $conexion->real_escape_string($_POST['rolUsuario']);
-    $Estado = $conexion->real_escape_string($_POST['estado']);
-    $usuario = $conexion->real_escape_string($_POST['usuario']);
-    $nombre = $conexion->real_escape_string($_POST['nombreUsuario']);
-    $apellido = $conexion->real_escape_string($_POST['apellidoUsuario']);
-    $correo = $conexion->real_escape_string($_POST['correoUsuario']);
-    $pais = $conexion->real_escape_string($_POST['nombrePais']);
+    if (isset($_POST['modificar'])) {
+        $id = $_POST['id'];
+        $idUsuario = $conexion->real_escape_string($_POST['idUsuario']);
+        $Rol = $conexion->real_escape_string($_POST['rolUsuario']);
+        $Estado = $conexion->real_escape_string($_POST['estado']);
+        $usuario = $conexion->real_escape_string($_POST['usuario']);
+        $nombre = $conexion->real_escape_string($_POST['nombreUsuario']);
+        $apellido = $conexion->real_escape_string($_POST['apellidoUsuario']);
+        $correo = $conexion->real_escape_string($_POST['correoUsuario']);
+        $pais = $conexion->real_escape_string($_POST['nombrePais']);
 
-    $actualiza = "UPDATE usuario SET nombreUsuario='".htmlentities($nombre)."', apellidoUsuario='".htmlentities($apellido)."', correoUsuario='".htmlentities($correo)."', idRol='$Rol', usuario='".htmlentities($usuario)."', idEstado='$Estado', idPais='$pais' WHERE idUsuario='$id'";
+        $actualiza = "UPDATE usuario SET nombreUsuario='".htmlentities($nombre)."', apellidoUsuario='".htmlentities($apellido)."', correoUsuario='".htmlentities($correo)."', idRol='$Rol', usuario='".htmlentities($usuario)."', idEstado='$Estado', idPais='$pais' WHERE idUsuario='$id'";
 
-    $actualizar = $conexion->query($actualiza);
-    $_SESSION["actualizado"] = "Se ha actualizado el usuario correctamente";
-    header("location: ../../vistas/usuario/modificar-listar.php");
-}
-
+        $actualizar = $conexion->query($actualiza);
+        $_SESSION["actualizado"] = "Se ha actualizado el usuario correctamente";
+        header("location: ../../vistas/usuario/modificar-listar.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -70,7 +70,8 @@ if (isset($_POST['modificar'])) {
 </head>
 
 <body class="bg-dark ">
-    <?php include '../../../modules/menu/menu-admin.php'; ?>
+    <?php include '../../../modules/menu-footer.php'; ?>
+    <?= menuAdmin("../../../"); ?>
 
     <p id="Titulo3" class="text-center text-light mt-5"> Modificar Usuario <?php $usuario ?> <i class="bi bi ms-2"></i> </p>
 
