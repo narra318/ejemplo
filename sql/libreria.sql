@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-01-2023 a las 18:57:46
+-- Tiempo de generación: 25-02-2023 a las 19:31:23
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -20,31 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `libreria`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `autor`
---
-
-CREATE TABLE `autor` (
-  `idAutor` int(11) NOT NULL,
-  `nombreAutor` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
-  `apellidoAutor` varchar(25) COLLATE utf8_spanish2_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `autor`
---
-
-INSERT INTO `autor` (`idAutor`, `nombreAutor`, `apellidoAutor`) VALUES
-(1, 'Alice', 'Oseman'),
-(2, 'Haruki', 'Murakami'),
-(3, 'Paulo', 'Coelho'),
-(4, 'Pablo', 'Neruda'),
-(5, 'Antonio', 'Ortiz'),
-(8, 'Alice', 'Kellen'),
-(9, 'Alice', 'Munro');
 
 -- --------------------------------------------------------
 
@@ -78,62 +53,6 @@ INSERT INTO `categoria` (`idCategoria`, `categoria`) VALUES
 (9, 'poesia turca'),
 (2, 'Romance'),
 (11, 'siuu');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `cliente`
---
-
-CREATE TABLE `cliente` (
-  `idCliente` int(11) NOT NULL,
-  `nombreCliente` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
-  `apellidoCliente` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
-  `correoCliente` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
-  `idRol` int(11) NOT NULL,
-  `usuarioCliente` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
-  `contrasenaCliente` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
-  `idPais` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `cliente`
---
-
-INSERT INTO `cliente` (`idCliente`, `nombreCliente`, `apellidoCliente`, `correoCliente`, `idRol`, `usuarioCliente`, `contrasenaCliente`, `idPais`) VALUES
-(1, 'Nikol', 'Ramírez', 'nikolr9.29@gmail.com', 3, 'Nikol', 'HgLesw==', 52),
-(2, 'Alexandra', 'Ramos', 'Alexandra@gmail.com', 3, 'Alexandra', 'HgLesw==', 12),
-(3, 'Andrea', 'Ramos', 'andrea@gmail.com', 3, 'Andrea', 'T1WL8/Oy', 52),
-(4, 'Nikol', 'Ramírez', 'nikol@gmail.com', 3, 'Nikol12', 'HgLesw==', 52),
-(5, 'Neil', 'Armstrong', 'Neil@hotmail.com', 3, 'Neil', 'QF6G7fc=', 52),
-(6, 'Camila', 'Ramírez', 'Camila@gmail.com', 3, 'Camila', 'TVqC6Pqy', 52),
-(7, 'John', 'Glenn', 'JohnGlenn@gmail.com', 3, 'JohnGlenn', 'HgLesw==', 17),
-(8, 'Antonio', 'Ortiz', 'AntonioOrtiz@hotmail.com', 3, 'AntoniOrtiz', 'Gw3YuQ==', 52),
-(9, 'Julian', 'Lopez', 'julian@gmail.com', 3, 'Julian', 'HwnctaPl', 102);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `compra`
---
-
-CREATE TABLE `compra` (
-  `idCompra` int(11) NOT NULL,
-  `idLibro` int(11) NOT NULL,
-  `fechaCompra` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `compras_cliente`
---
-
-CREATE TABLE `compras_cliente` (
-  `idCompra_cliente` int(11) NOT NULL,
-  `idCompra` int(11) NOT NULL,
-  `idCliente` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -205,7 +124,9 @@ INSERT INTO `foro` (`id`, `idUsuario`, `nombreLibro`, `autorLibro`, `descripcion
 (2, 7, '---', '---', 'El libro est&aacute; dividido en tres partes, cada una de ellas supone una etapa en el proceso de superaci&oacute;n personal que llev&oacute; a cabo el autor (&laquo;el fin&raquo;, &laquo;la transici&oacute;n&raquo; y &laquo;el principio&raquo;) ejemplificada con la evoluci&oacute;n de la larva hasta convertirse en la mariposa.', 1, '2015-11-22 00:00:00', 0, 1, '2015-11-22 00:00:00'),
 (4, 10, 'Los Siete Maridos de Evelyn Hugo', 'Taylor Jenkins Reid', 'Evelyn Hugo, el &iacute;cono de Hollywood que se ha recluido en su edad madura, decide al fin contar la verdad sobre su vida llena de glamour y de esc&aacute;ndalos. Pero cuando elige para ello a Monique Grant, una periodista desconocida, nadie se sorprende m&aacute;s que la misma Monique. &iquest;Por qu&eacute; ella? &iquest;Por qu&eacute; ahora? Monique no est&aacute; precisamente en su mejor momento. Su marido la abandon&oacute;, y su vida profesional no avanza. Aun ignorando por qu&eacute; Evelyn la ha elegido para escribir su biograf&iacute;a, Monique est&aacute; decidida a aprovechar esa oportunidad para dar impulso a su carrera. Convocada al lujoso apartamento de Evelyn, Monique escucha fascinada mientras la actriz le cuenta su historia. Desde su llegada a Los &Aacute;ngeles en los a&ntilde;os 50 hasta su decisi&oacute;n de abandonar su carrera en el espect&aacute;culo en los 80 &mdash;y, desde luego, los siete maridos que tuvo en ese tiempo&mdash; Evelyn narra una historia de ambici&oacute;n implacable, amistad inesperada, y un gran amor prohibido. Monique empieza a sentir una conexi&oacute;n muy real con la actriz legendaria, pero cuando el relato de Evelyn se acerca a su fin, resulta evidente que su vida se cruza con la de Monique de un modo tr&aacute;gico e irreversible. &laquo;Fascinante, desgarradora y llena del glamour de la Vieja Hollywood, Los siete maridos de Evelyn Hugo es una de las novelas m&aacute;s cautivantes.&raquo;', 1, '2015-11-22 00:00:00', 0, 0, '2015-11-22 00:00:00'),
 (5, 15, 'Lucky Boy (libro en Inglés)', 'Shanthi Sekeran', 'Two women. Two possible futures. One lucky boy. Eighteen years old and fizzing with optimism, Solimar Castro Valdez embarks on a perilous journey across the Mexican border. Weeks later, she arrives in Berkeley, California, dazed by first love found then lost, and pregnant. This was not the plan. Undocumented and unmoored, Soli discovers that her son, Mr. Ignacio, can become her touchstone, and motherhood her identity in a world where she&#039;s otherwise invisible. Kavya Reddy has created a beautiful life in Berkeley, but then she can&#039;t get pregnant and that beautiful life seems suddenly empty. When Soli is placed in immigrant detention, Ignacio comes under Kavya&#039;s care and she finally gets to be the singing, storytelling kind of mother she dreamed of being. But she builds her love on a fault line, her heart wrapped around someone else&#039;s child. &quot;Nacho&quot; to Soli, and &quot;Iggy&quot; to Kavya, the boy is steeped in love, but his destiny and that of his two mothers teeters between two worlds as Soli fights to get back to him. Lucky Boy is a moving and revelatory ode to the ever-changing boundaries of love. &quot;Swept me away and took a little piece of my heart with it. It&#039;s a perfect book.&quot; Edan Lepucki , New York Times bestselling author of California &quot;A heartfelt and moving novel that challenges the true meaning of home. A deeply beautiful book.&quot; Molly Antopol, author of The UnAmericans', 1, '2015-11-22 00:00:00', 0, 0, '2015-11-22 00:00:00'),
-(27, 1, 'Foro', 'Administrador', 'Este es un foro de prueba por administrador', 1, '2005-12-22 00:00:00', 0, 0, '2005-12-22 00:00:00');
+(27, 1, 'Foro', 'Administrador', 'Este es un foro de prueba por administrador', 1, '2005-12-22 00:00:00', 0, 0, '2005-12-22 00:00:00'),
+(33, 37, 'Perdón a la lluvia -', ' Sara Búho', 'Descripci&oacute;n del libro', 1, '2014-02-23 00:00:00', 0, 0, '2014-02-23 00:00:00'),
+(34, 1, 'Prueba', 'autor', 'descripci&oacute;n', 1, '2014-02-23 00:00:00', 0, 0, '2014-02-23 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -216,8 +137,10 @@ INSERT INTO `foro` (`id`, `idUsuario`, `nombreLibro`, `autorLibro`, `descripcion
 CREATE TABLE `libro` (
   `idLibro` int(11) NOT NULL,
   `nombreLibro` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
+  `autor` varchar(70) COLLATE utf8_spanish2_ci NOT NULL,
   `descripcionLibro` text COLLATE utf8_spanish2_ci NOT NULL,
   `precioLibro` int(20) NOT NULL,
+  `cantidad` int(3) NOT NULL,
   `idEditorial` int(11) NOT NULL,
   `paginas` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
   `publicacion` varchar(25) COLLATE utf8_spanish2_ci DEFAULT NULL,
@@ -233,47 +156,26 @@ CREATE TABLE `libro` (
 -- Volcado de datos para la tabla `libro`
 --
 
-INSERT INTO `libro` (`idLibro`, `nombreLibro`, `descripcionLibro`, `precioLibro`, `idEditorial`, `paginas`, `publicacion`, `idPais`, `idTematica`, `ISBN`, `idCategoria`, `idEstado`, `img`) VALUES
-(2, 'Nosotros En La Luna', '     Cuando Rhys y Ginger se conocen en las calles de la ciudad de la luz, no imaginan que sus vidas se unirán para siempre, a pesar de la distancia y de que no puedan ser más diferentes. Ella vive en Londres y a veces se siente tan perdida que se ha olvidado hasta de sus propios sueños. Él es incapaz de quedarse quieto en ningún lugar y cree saber quién es. Y cada noche su amistad crece entre emails llenos de confidencias, dudas e inquietudes. Pero ¿qué ocurre cuando el paso del tiempo pone a prueba su relación? ¿Es posible colgarse de la luna junto a otra persona sin poner en riesgo el corazón? Una historia sobre el amor, el destino y la búsqueda de uno mismo. Porque a veces, solo hace falta mirar la luna para sentirte cerca de otra persona.     ', 62000, 2, '480', '2021', 73, 2, '978-84-08-23738-9', 2, 2, '/img/978-84-08-23738-9.jpg'),
-(3, 'Lumpen', 'Lumpen pone voz a los desgarradas vivencias de los excluidos, de aquellos que nunca se encuentran en su sitio, que navegan por la vida en una vieja barca sin adivinar el rumbo. Es un libro tan sagaz como conmovedor, cuajado de referencias urbanas, filosóficas, pero también de los medios de comunicación, la televisión, el cine y de la cultura pop en general. Sus textos son pequeños golpes con un ritmo ágil y dinámico que recuerda mucho a los «Spoken Words», recitales poéticos que combinan la palabra, su entonación, su ritmo, con distintos elementos teatrales. Lumpen puede ser leído como una performance de la vertiginosa vida de una marginada que lleva toda la vida intentando encajar en un mundo que le resulta incómodo, difícil, a veces inadmisible.', 90454, 3, '104', '2022', 73, 2, '9788467066678', 4, 1, '/img/lumpen.jpg'),
-(6, 'El Mapa De Los Anhelos', '   ¿Y si te diesen un mapa para descubrir quién eres? ¿Seguirías la ruta marcada hasta el final? Imagina que estás destinada a salvar a tu hermana, pero al final ella muere y la razón de tu existencia se desvanece. Eso es lo que le ocurre a Grace Peterson, la chica que siempre se ha sentido invisible, la que nunca ha salido de Nebraska, la que colecciona palabras y ve pasar los días refugiada en la monotonía. Hasta que llega a sus manos el juego de El mapa de los anhelos y, siguiendo las instrucciones, lo primero que debe hacer es encontrar a alguien llamado Will Tucker, del que nunca ha oído hablar y que está a punto de embarcarse con ella en un viaje directo al corazón, lleno de vulnerabilidades y sueños olvidados, anhelos y afectos inesperados. Pero ¿es posible avanzar cuando los secretos comienzan a pesar demasiado? ¿Quién es quién en esta historia?   ', 43200, 3, '490', '2022', 15, 2, '9786280001654', 1, 1, '/img/10.jpg'),
-(7, 'Perdón a la lluvia', '  Perdón a la lluvia es un conjunto de tormentas que no supimos navegar. Un viaje por todos los naufragios, por todo lo mal entendido. Una vuelta al dolor en brazos de la nostalgia. Un intento de convertir los recuerdos en alas, y que dejen de ser cadenas. Un paso atrás para recuperar lo que es valioso y quedó perdido en la huida, y también para sanar lo que un día no supimos cómo. En estas páginas los lectores se asomarán a un cuidado cuaderno de notas íntimas, acompañadas de frases manuscritas y dibujos originales de la propia Sara Búho. Al igual que en sus anteriores poemarios, y en palabras de Gioconda Belli, «permanecerán sus versos rondándote mientras vuelan frágiles pero contundentes frente a tus ojos».  ', 115287, 3, '160', '2022', 241, 2, '9788418820755', 4, 1, '/img/perdon-lluvia.jpg'),
-(8, 'Flores', 'Flores es un breve y delicado libro compuesto por 42 poemas. Este poemario de Nieves Pulido, de clara influencia oriental, explora las correspondencias y tensiones que se dan entre poema y naturaleza, lenguaje y realidad. Ordenados a modo de manual botánico, los poemas van acompañados por las bellas ilustraciones de Eire (Irlanda Tambascio), que aparecen como una auténtica y logradísima reproducción de las flores originales.', 90454, 3, '80', '2022', 73, 2, '9788467065510', 4, 1, '/img/flores.jpg'),
-(9, 'eighteen ', 'Alberto Ramos tenía solo 15 años cuando decidió meter en una maleta su esperanza y voluntad, abandonar Málaga y establecerse en Estocolmo, buscando una nueva vida. Y realizar su sueño de estudiar en el extranjero su bachillerato internacional. El instituto está situado en Södertälje, un peculiar municipio de Estocolmo con una gran influencia del cristianismo (católico y ortodoxo) e ideologías inflexibles y totalitarias por su población proveniente de las diásporas asiria (assyrier/syrianer) y árabe. La resultante homofobia extrema de ese fuerte choque cultural hizo que lo que para Alberto comenzó como una aventura se transformara en una pesadilla que duró tres años. El joven tuvo que enfrentarse a continuos episodios de abusos, intimidaciones, desprecios y bullying por parte de sus compañeros debido a su orientación sexual. Las denuncias ante la policía no tuvieron efecto y fue entonces cuando decidió hacerlo públicamente a través de sus redes sociales, llegando así a los medios de comunicación. Estos se hicieron eco del caso. Le pusieron una pulsera de seguridad para estar conectado con la policía, comenzaron a ir agentes al instituto, la directora decidió llenar todo el instituto de banderas LGTB…', 90454, 3, '248', '2021', 73, 2, '9788467061291', 4, 1, '/img/eighteen.jpg'),
-(10, 'Anhelo ', ' Primer volumen de la adictiva Serie Crave.\r\n\r\nUna chica capaz de vencer al miedo. Un vampiro marcado por su oscuro pasado. Dos seres solitarios cuyos caminos se cruzan en el lugar más frío de la Tierra.\r\n\r\nMi mundo cambió en el instante en el que pisé el instituto Katmere. Aquí todo resulta extraño: la escuela, los alumnos, las asignaturas; y yo no soy más que una simple mortal entre ellos, dioses... o monstruos. Todavía no sé a qué bando pertenezco, si es que pertenezco a alguno, sólo sé que lo que parece unirlos a todos es su odio hacia mí.\r\n\r\nPero entre ellos está Jaxon Vega, un vampiro que esconde oscuros secretos y que no ha sentido nada durante un siglo. Algo en él me atrae, apenas lo conozco, pero sé que hay algo roto en su interior que de alguna manera encaja con lo que hay roto en mí. Acercarme a él puede significar el fin del mundo, pero empiezo a sospechar que alguien me ha traído a este lugar a propósito, y tengo que descubrir por qué.\r\n\r\n«Vampiros, hombres lobo, dragones… ¡Lo tiene todo! Es imposible de soltar.» Andrea Izquierdo (@andreorowling) ', 110173, 5, '672', '2022', 241, 2, '9788408232995', 5, 1, '/img/Anhelo.jpg'),
-(11, 'Los crímenes de Chopin', 'En varias casas de Sevilla se han producido una serie de robos que preocupan a toda la ciudad. El ladrón, al que apodan «Chopin» porque siempre deja una partitura del famoso compositor para firmar el robo, se lleva dinero, joyas y diferentes artículos de valor. Una noche aparece un cadáver en el salón de una de esas viviendas y la tensión aumenta.\r\n\r\nNikolai Olejnik es un joven polaco que llegó a España con su abuelo hace varios años. Desde que este murió, está solo y sobrevive a base de delinquir. Fue un niño prodigio en su país y su mayor pasión es tocar el piano. De repente, todo se complica y se convierte en el principal sospechoso de un asesinato. Niko acude al despacho de Celia Mayo, detective privado, a pedirle ayuda y allí conoce a Triana, la hija de Celia. La joven enseguida llama su atención, aunque no es el mejor momento para enamorarse.\r\nBlanca Sanz apenas lleva cinco meses trabajando en el periódico El Guadalquivir cuando recibe una extraña llamada en la que le filtran datos sobre el caso Chopin, que nadie más conoce. Desde ese momento se obsesiona con todo lo relacionado con la investigación e intenta averiguar quién está detrás de aquellos robos. \r\n\r\nIntriga, misterio, amor y crímenes son la base de esta novela ambientada en las enigmáticas calles de Sevilla, en la que el lector formará parte de la investigación. ¿Conseguirás adivinar quién es el culpable?', 113928, 2, '512', '2022', 173, 2, '9786123197599', 5, 1, '/img/chopin.jpg'),
-(12, 'Los hombres de Federico', '   Un año después, las mujeres de Federico se reúnen de nuevo en la Huerta de San Vicente ante la llamada de Novia, pero ellas ya no son las mismas y el entorno también ha cambiado por un paisaje sombrío y bañado en rojo. El encuentro se complicará cuando las protagonistas descubran que García Lorca creó un manuscrito sobre sus nuevas vidas que deja una puerta abierta a que otros personajes se adueñen de la historia. Las mujeres se darán cuenta de que algo no va bien cuando ocurran situaciones extrañas en la casa y su angustia irá en aumento con los rumores de que los hombres de Federico (las antiguas parejas o amantes de ellas) quieren llegar hasta el lugar con propósitos desconocidos. Solo la magia y mantenerse juntas podrán ayudarlas a enfrentarse a la incertidumbre y a los peligros que les depara esa imprevista llegada.   ', 122334, 4, '170', '2022', 73, 2, '9788418820861', 5, 1, '/img/federico.jpg'),
-(13, 'Sueño ', ' Mientras un hombre misterioso no puede despertar de un terrible sueño en el que inquietantes escenas de desamor se van solapando, la hermosa Sofía viaja a un enclave paradisiaco para intentar resolver las dudas que pesan sobre su relación tras más de una década junto a su pareja. Sus largos paseos por la isla y un fascinante hombre llamado Alexandro le harán revivir sensaciones hace tiempo olvidadas y replantearse en qué consiste el amor y las razones que la han llevado hasta allí.\r\n\r\nEntretanto, la joven Danae, disgustada por tener que pasar las vacaciones alejada de su mejor amiga, descubre lo que significa que, por primera vez, se te desboque el corazón.\r\n\r\nUna novela intimista y reflexiva, a veces desgarradora, otras ilusionante y evocadora, sobre la naturaleza de las relaciones de pareja y las distintas etapas del amor.\r\n\r\nA veces, la verdadera naturaleza del amor se manifiesta solo a través de los sueños. ', 111593, 2, '208', '2022', 73, 2, '9788408263432', 5, 1, '/img/Sueño.jpg'),
-(14, 'Los crímenes de Chopin', '  En varias casas de Sevilla se han producido una serie de robos que preocupan a toda la ciudad. El ladrón, al que apodan «Chopin» porque siempre deja una partitura del famoso compositor para firmar el robo, se lleva dinero, joyas y diferentes artículos de valor. Una noche aparece un cadáver en el salón de una de esas viviendas y la tensión aumenta.\r\n\r\nNikolai Olejnik es un joven polaco que llegó a España con su abuelo hace varios años. Desde que este murió, está solo y sobrevive a base de delinquir. Fue un niño prodigio en su país y su mayor pasión es tocar el piano. De repente, todo se complica y se convierte en el principal sospechoso de un asesinato. Niko acude al despacho de Celia Mayo, detective privado, a pedirle ayuda y allí conoce a Triana, la hija de Celia. La joven enseguida llama su atención, aunque no es el mejor momento para enamorarse.\r\nBlanca Sanz apenas lleva cinco meses trabajando en el periódico El Guadalquivir cuando recibe una extraña llamada en la que le filtran datos sobre el caso Chopin, que nadie más conoce. Desde ese momento se obsesiona con todo lo relacionado con la investigación e intenta averiguar quién está detrás de aquellos robos.\r\n\r\nIntriga, misterio, amor y crímenes son la base de esta novela ambientada en las enigmáticas calles de Sevilla, en la que el lector formará parte de la investigación. ¿Conseguirás adivinar quién es el culpable?  ', 113928, 2, '400', '2022', 241, 2, '97884467066678', 5, 2, '/img/WhatsApp Image 2022-08-24 at 4.39.2'),
-(15, 'La Canción de Aquiles', 'Grecia en la era de los héroes. Patroclo, un príncipe joven y torpe, ha sido exiliado al reino de Ftía, donde vive a la sombra del rey Peleo y su hijo divino, Aquiles. Aquiles, el mejor de los griegos, es todo lo que no es Patroclo: fuerte, apuesto, hijo de una diosa. Un día Aquiles toma bajo su protección al lastimoso príncipe y ese vínculo provisional da paso a una sólida amistad mientras ambos se convierten en jóvenes habilidosos en las artes de la guerra. Pero el destino nunca está lejos de los talones de Aquiles. Cuando se extiende la noticia del rapto de Helena de Esparta, se convoca a los hombres de Grecia para asediar la ciudad de Troya. Aquiles, seducido por la promesa de un destino glorioso, se une a la causa, y Patroclo, dividido entre el amor y el miedo por su compañero, lo sigue a la guerra. Poco podía imaginar que los años siguientes iban a poner a prueba todo cuanto habían aprendido y todo cuanto valoraban profundamente.', 95749, 2, '230', '2021', 146, 2, '9786075508054', 2, 1, '/img/aquiles.jpg'),
-(16, 'e', ' e ', 3, 1, '34', '43', 3, 5, '3', 1, 1, '/img/1449378000.jpg'),
-(17, 'd', 's', 1, 3, '23', '54', 19, 10, '2', 5, 2, '/img/1668975703.jpg'),
-(18, '5', ' f ', 3, 1, '43', '4', 5, 9, '4', 5, 1, '/img/1668975860.jpg'),
-(19, 'Libro de prueba', ' Esta descripción es de prueba ', 190000, 1, '90', '2022', 30, 4, '091274482', 3, 1, '/img/1670289097.jpg'),
-(20, 'Libro de prueba 2', 'Este es el segundo libro de prueba', 90000, 1, '123', '0912', 5, 1, '0912742821', 3, 1, '/img/1670290923.png'),
-(21, '1', '1', 1, 1, '1', '1', 14, 5, '1', 1, 1, '/img/1670291077.png'),
-(23, '2', ' 2 ', 2, 3, '2', '2', 16, 2, '23424', 1, 2, '/img/1670291308.jpg'),
-(24, '3', '3', 2323232, 1, '333', '543', 14, 5, '332323', 1, 1, '/img/1670291527.png');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `libro_autor`
---
-
-CREATE TABLE `libro_autor` (
-  `idLibro_autor` int(11) NOT NULL,
-  `idLibro` int(11) NOT NULL,
-  `idAutor` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
-
---
--- Volcado de datos para la tabla `libro_autor`
---
-
-INSERT INTO `libro_autor` (`idLibro_autor`, `idLibro`, `idAutor`) VALUES
-(1, 6, 8),
-(2, 8, 9);
+INSERT INTO `libro` (`idLibro`, `nombreLibro`, `autor`, `descripcionLibro`, `precioLibro`, `cantidad`, `idEditorial`, `paginas`, `publicacion`, `idPais`, `idTematica`, `ISBN`, `idCategoria`, `idEstado`, `img`) VALUES
+(3, 'Lumpen', 'Aixa Bonilla', 'Lumpen pone voz a los desgarradas vivencias de los excluidos, de aquellos que nunca se encuentran en su sitio, que navegan por la vida en una vieja barca sin adivinar el rumbo. Es un libro tan sagaz como conmovedor, cuajado de referencias urbanas, filosóficas, pero también de los medios de comunicación, la televisión, el cine y de la cultura pop en general. Sus textos son pequeños golpes con un ritmo ágil y dinámico que recuerda mucho a los «Spoken Words», recitales poéticos que combinan la palabra, su entonación, su ritmo, con distintos elementos teatrales. Lumpen puede ser leído como una performance de la vertiginosa vida de una marginada que lleva toda la vida intentando encajar en un mundo que le resulta incómodo, difícil, a veces inadmisible.', 90454, 2, 3, '104', '2022', 73, 2, '9788467066678', 4, 1, '/img/lumpen.jpg'),
+(6, 'El Mapa De Los Anhelos', 'Alice Kellen', '   ¿Y si te diesen un mapa para descubrir quién eres? ¿Seguirías la ruta marcada hasta el final? Imagina que estás destinada a salvar a tu hermana, pero al final ella muere y la razón de tu existencia se desvanece. Eso es lo que le ocurre a Grace Peterson, la chica que siempre se ha sentido invisible, la que nunca ha salido de Nebraska, la que colecciona palabras y ve pasar los días refugiada en la monotonía. Hasta que llega a sus manos el juego de El mapa de los anhelos y, siguiendo las instrucciones, lo primero que debe hacer es encontrar a alguien llamado Will Tucker, del que nunca ha oído hablar y que está a punto de embarcarse con ella en un viaje directo al corazón, lleno de vulnerabilidades y sueños olvidados, anhelos y afectos inesperados. Pero ¿es posible avanzar cuando los secretos comienzan a pesar demasiado? ¿Quién es quién en esta historia?   ', 43200, 20, 3, '490', '2022', 15, 2, '9786280001654', 1, 1, '/img/10.jpg'),
+(7, 'Perdón a la lluvia', 'Sara Búho', '  Perdón a la lluvia es un conjunto de tormentas que no supimos navegar. Un viaje por todos los naufragios, por todo lo mal entendido. Una vuelta al dolor en brazos de la nostalgia. Un intento de convertir los recuerdos en alas, y que dejen de ser cadenas. Un paso atrás para recuperar lo que es valioso y quedó perdido en la huida, y también para sanar lo que un día no supimos cómo. En estas páginas los lectores se asomarán a un cuidado cuaderno de notas íntimas, acompañadas de frases manuscritas y dibujos originales de la propia Sara Búho. Al igual que en sus anteriores poemarios, y en palabras de Gioconda Belli, «permanecerán sus versos rondándote mientras vuelan frágiles pero contundentes frente a tus ojos».  ', 115287, 80, 3, '160', '2022', 241, 2, '9788418820755', 4, 1, '/img/perdon-lluvia.jpg'),
+(8, 'Flores', 'Nieves Pulido', 'Flores es un breve y delicado libro compuesto por 42 poemas. Este poemario de Nieves Pulido, de clara influencia oriental, explora las correspondencias y tensiones que se dan entre poema y naturaleza, lenguaje y realidad. Ordenados a modo de manual botánico, los poemas van acompañados por las bellas ilustraciones de Eire (Irlanda Tambascio), que aparecen como una auténtica y logradísima reproducción de las flores originales.', 90454, 12, 3, '80', '2022', 73, 2, '9788467065510', 4, 1, '/img/flores.jpg'),
+(9, 'eighteen ', 'Alberto Ramos', 'Alberto Ramos tenía solo 15 años cuando decidió meter en una maleta su esperanza y voluntad, abandonar Málaga y establecerse en Estocolmo, buscando una nueva vida. Y realizar su sueño de estudiar en el extranjero su bachillerato internacional. El instituto está situado en Södertälje, un peculiar municipio de Estocolmo con una gran influencia del cristianismo (católico y ortodoxo) e ideologías inflexibles y totalitarias por su población proveniente de las diásporas asiria (assyrier/syrianer) y árabe. La resultante homofobia extrema de ese fuerte choque cultural hizo que lo que para Alberto comenzó como una aventura se transformara en una pesadilla que duró tres años. El joven tuvo que enfrentarse a continuos episodios de abusos, intimidaciones, desprecios y bullying por parte de sus compañeros debido a su orientación sexual. Las denuncias ante la policía no tuvieron efecto y fue entonces cuando decidió hacerlo públicamente a través de sus redes sociales, llegando así a los medios de comunicación. Estos se hicieron eco del caso. Le pusieron una pulsera de seguridad para estar conectado con la policía, comenzaron a ir agentes al instituto, la directora decidió llenar todo el instituto de banderas LGTB…', 90454, 20, 3, '248', '2021', 73, 2, '9788467061291', 4, 1, '/img/eighteen.jpg'),
+(10, 'Anhelo ', 'Tracy Wolff', ' Primer volumen de la adictiva Serie Crave.\r\n\r\nUna chica capaz de vencer al miedo. Un vampiro marcado por su oscuro pasado. Dos seres solitarios cuyos caminos se cruzan en el lugar más frío de la Tierra.\r\n\r\nMi mundo cambió en el instante en el que pisé el instituto Katmere. Aquí todo resulta extraño: la escuela, los alumnos, las asignaturas; y yo no soy más que una simple mortal entre ellos, dioses... o monstruos. Todavía no sé a qué bando pertenezco, si es que pertenezco a alguno, sólo sé que lo que parece unirlos a todos es su odio hacia mí.\r\n\r\nPero entre ellos está Jaxon Vega, un vampiro que esconde oscuros secretos y que no ha sentido nada durante un siglo. Algo en él me atrae, apenas lo conozco, pero sé que hay algo roto en su interior que de alguna manera encaja con lo que hay roto en mí. Acercarme a él puede significar el fin del mundo, pero empiezo a sospechar que alguien me ha traído a este lugar a propósito, y tengo que descubrir por qué.\r\n\r\n«Vampiros, hombres lobo, dragones… ¡Lo tiene todo! Es imposible de soltar.» Andrea Izquierdo (@andreorowling) ', 110173, 10, 5, '672', '2022', 241, 2, '9788408232995', 5, 1, '/img/Anhelo.jpg'),
+(11, 'Los crímenes de Chopin', 'Blue Jeans', 'En varias casas de Sevilla se han producido una serie de robos que preocupan a toda la ciudad. El ladrón, al que apodan «Chopin» porque siempre deja una partitura del famoso compositor para firmar el robo, se lleva dinero, joyas y diferentes artículos de valor. Una noche aparece un cadáver en el salón de una de esas viviendas y la tensión aumenta.\r\n\r\nNikolai Olejnik es un joven polaco que llegó a España con su abuelo hace varios años. Desde que este murió, está solo y sobrevive a base de delinquir. Fue un niño prodigio en su país y su mayor pasión es tocar el piano. De repente, todo se complica y se convierte en el principal sospechoso de un asesinato. Niko acude al despacho de Celia Mayo, detective privado, a pedirle ayuda y allí conoce a Triana, la hija de Celia. La joven enseguida llama su atención, aunque no es el mejor momento para enamorarse.\r\nBlanca Sanz apenas lleva cinco meses trabajando en el periódico El Guadalquivir cuando recibe una extraña llamada en la que le filtran datos sobre el caso Chopin, que nadie más conoce. Desde ese momento se obsesiona con todo lo relacionado con la investigación e intenta averiguar quién está detrás de aquellos robos. \r\n\r\nIntriga, misterio, amor y crímenes son la base de esta novela ambientada en las enigmáticas calles de Sevilla, en la que el lector formará parte de la investigación. ¿Conseguirás adivinar quién es el culpable?', 113928, 6, 2, '512', '2022', 173, 2, '9786123197599', 5, 1, '/img/chopin.jpg'),
+(12, 'Los hombres de Federico', 'Ana Bernal', '   Un año después, las mujeres de Federico se reúnen de nuevo en la Huerta de San Vicente ante la llamada de Novia, pero ellas ya no son las mismas y el entorno también ha cambiado por un paisaje sombrío y bañado en rojo. El encuentro se complicará cuando las protagonistas descubran que García Lorca creó un manuscrito sobre sus nuevas vidas que deja una puerta abierta a que otros personajes se adueñen de la historia. Las mujeres se darán cuenta de que algo no va bien cuando ocurran situaciones extrañas en la casa y su angustia irá en aumento con los rumores de que los hombres de Federico (las antiguas parejas o amantes de ellas) quieren llegar hasta el lugar con propósitos desconocidos. Solo la magia y mantenerse juntas podrán ayudarlas a enfrentarse a la incertidumbre y a los peligros que les depara esa imprevista llegada.   ', 122334, 8, 4, '170', '2022', 73, 2, '9788418820861', 5, 1, '/img/federico.jpg'),
+(13, 'Sueño ', 'Iván Sánchez', ' Mientras un hombre misterioso no puede despertar de un terrible sueño en el que inquietantes escenas de desamor se van solapando, la hermosa Sofía viaja a un enclave paradisiaco para intentar resolver las dudas que pesan sobre su relación tras más de una década junto a su pareja. Sus largos paseos por la isla y un fascinante hombre llamado Alexandro le harán revivir sensaciones hace tiempo olvidadas y replantearse en qué consiste el amor y las razones que la han llevado hasta allí.\r\n\r\nEntretanto, la joven Danae, disgustada por tener que pasar las vacaciones alejada de su mejor amiga, descubre lo que significa que, por primera vez, se te desboque el corazón.\r\n\r\nUna novela intimista y reflexiva, a veces desgarradora, otras ilusionante y evocadora, sobre la naturaleza de las relaciones de pareja y las distintas etapas del amor.\r\n\r\nA veces, la verdadera naturaleza del amor se manifiesta solo a través de los sueños. ', 111593, 12, 2, '208', '2022', 73, 2, '9788408263432', 5, 1, '/img/Sueño.jpg'),
+(15, 'La Canción de Aquiles', 'Madeline Miller', 'Grecia en la era de los héroes. Patroclo, un príncipe joven y torpe, ha sido exiliado al reino de Ftía, donde vive a la sombra del rey Peleo y su hijo divino, Aquiles. Aquiles, el mejor de los griegos, es todo lo que no es Patroclo: fuerte, apuesto, hijo de una diosa. Un día Aquiles toma bajo su protección al lastimoso príncipe y ese vínculo provisional da paso a una sólida amistad mientras ambos se convierten en jóvenes habilidosos en las artes de la guerra. Pero el destino nunca está lejos de los talones de Aquiles. Cuando se extiende la noticia del rapto de Helena de Esparta, se convoca a los hombres de Grecia para asediar la ciudad de Troya. Aquiles, seducido por la promesa de un destino glorioso, se une a la causa, y Patroclo, dividido entre el amor y el miedo por su compañero, lo sigue a la guerra. Poco podía imaginar que los años siguientes iban a poner a prueba todo cuanto habían aprendido y todo cuanto valoraban profundamente.', 95749, 100, 2, '230', '2021', 146, 2, '9786075508054', 2, 1, '/img/aquiles.jpg'),
+(16, 'e', 'That', ' e ', 3, 45, 1, '34', '43', 3, 5, '3', 1, 1, '/img/1449378000.jpg'),
+(18, '5', 'Fool me twice', ' f ', 3, 98, 1, '43', '4', 5, 9, '4', 5, 1, '/img/1668975860.jpg'),
+(19, 'Libro de prueba', 'Think I Lose', ' Esta descripción es de prueba ', 190000, 17, 1, '90', '2022', 30, 4, '091274482', 3, 1, '/img/1670289097.jpg'),
+(20, 'Libro de prueba 2', 'My Sanity', 'Este es el segundo libro de prueba', 90000, 56, 1, '123', '0912', 5, 1, '0912742821', 3, 1, '/img/1670290923.png'),
+(21, '1', 'Years Ago', '1', 1, 22, 1, '1', '1', 14, 5, '1', 1, 1, '/img/1670291077.png'),
+(24, '3', 'Everyting Change', '3', 2323232, 33, 1, '333', '543', 14, 5, '332323', 1, 1, '/img/PortadaPredeterminada.jpg'),
+(25, 'Ma City', 'BTS', '   El lugar que más me gusta en el mundo\r\nNaturaleza y ciudad, lugares para construir\r\nPara mí, me gusta más el parque Lake que el río Han\r\nIncluso si eres pequeño, me abrazas tan plácidamente\r\nCuando se siente como si me fuera a olvidar de mis raíces\r\nEn ese lugar, encuentro el yo que se había desvanecido\r\nRecuerdo tu aroma y todo\r\nEres mi verano, otoño, invierno y cada primavera   ', 120000, 10, 1, '90', '2015', 58, 4, '20130613', 3, 1, '/img/1674325593.jpg'),
+(26, 'Inner Child', 'V', 'The smiling kid,\nThe child who used to just laugh brightly\nWhen I see you like that\nI keep laughing\n \nThe tingling sun and that summer&#039;s air\nThe grey-lit streets&#039; sounds that were so cold\nI draw in a breath and knock at your door', 109000, 5, 1, '210', '2020', 58, 2, '20200222', 4, 1, '/img/1674329922.jpg'),
+(27, 'Inner Child', 'Dennis', ' Libro de aventura por Dennis ', 156999, 10, 1, '583', '2023', 7, 2, '8923478789837329', 6, 1, '/img/1676379244.jpg');
 
 -- --------------------------------------------------------
 
@@ -624,17 +526,12 @@ INSERT INTO `usuario` (`idUsuario`, `nombreUsuario`, `apellidoUsuario`, `correoU
 (30, 'f', 'f', 'sf@gmail.com', 3, 'f', 'SF2J5w==', 1, 16),
 (34, '&lt;h1&gt; Nikol &lt;/h1&', '&lt;b&gt;  Ram&iacute;rez', 'noooooooooo@gmail.com', 3, 'Noooooooooooo', 'HgLesw==', 1, 13),
 (35, '&lt;h1&gt; Nikol &lt;/h1&', '&lt;b&gt;  Ram&iacute;rez', 'so@gmail.com', 3, 'soooo', 'HgLXtg==', 1, 10),
-(36, '&lt;h1&gt; Sexy &lt;/h1&a', '&lt;b&gt;  Nukim', 'sexynukim@gmail.com', 2, 'SexyNukim', 'HgLesw==', 1, 131);
+(36, '&lt;h1&gt; Sexy &lt;/h1&a', '&lt;b&gt;  Nukim', 'sexynukim@gmail.com', 2, 'SexyNukim', 'HgLesw==', 1, 131),
+(37, 'Dennis', 'Morato', 'dennis23@gmail.com', 3, 'Dennis23', 'Hwnc', 1, 24);
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `autor`
---
-ALTER TABLE `autor`
-  ADD PRIMARY KEY (`idAutor`);
 
 --
 -- Indices de la tabla `categoria`
@@ -642,31 +539,6 @@ ALTER TABLE `autor`
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`idCategoria`),
   ADD KEY `categoria` (`categoria`) USING BTREE;
-
---
--- Indices de la tabla `cliente`
---
-ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`idCliente`),
-  ADD UNIQUE KEY `usuarioCliente` (`usuarioCliente`),
-  ADD UNIQUE KEY `correoCliente` (`correoCliente`),
-  ADD KEY `idRol` (`idRol`),
-  ADD KEY `idPais` (`idPais`);
-
---
--- Indices de la tabla `compra`
---
-ALTER TABLE `compra`
-  ADD PRIMARY KEY (`idCompra`),
-  ADD KEY `idLibro` (`idLibro`);
-
---
--- Indices de la tabla `compras_cliente`
---
-ALTER TABLE `compras_cliente`
-  ADD PRIMARY KEY (`idCompra_cliente`),
-  ADD KEY `idCliente` (`idCliente`),
-  ADD KEY `idCompra` (`idCompra`);
 
 --
 -- Indices de la tabla `editorial`
@@ -700,14 +572,6 @@ ALTER TABLE `libro`
   ADD KEY `idPais` (`idPais`),
   ADD KEY `idCategoria` (`idCategoria`),
   ADD KEY `libro` (`idEstado`);
-
---
--- Indices de la tabla `libro_autor`
---
-ALTER TABLE `libro_autor`
-  ADD PRIMARY KEY (`idLibro_autor`),
-  ADD KEY `idAutor` (`idAutor`),
-  ADD KEY `idLibro` (`idLibro`);
 
 --
 -- Indices de la tabla `pais`
@@ -744,34 +608,10 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT de la tabla `autor`
---
-ALTER TABLE `autor`
-  MODIFY `idAutor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
   MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT de la tabla `cliente`
---
-ALTER TABLE `cliente`
-  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT de la tabla `compra`
---
-ALTER TABLE `compra`
-  MODIFY `idCompra` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `compras_cliente`
---
-ALTER TABLE `compras_cliente`
-  MODIFY `idCompra_cliente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `editorial`
@@ -789,19 +629,13 @@ ALTER TABLE `estado`
 -- AUTO_INCREMENT de la tabla `foro`
 --
 ALTER TABLE `foro`
-  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `libro`
 --
 ALTER TABLE `libro`
-  MODIFY `idLibro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
---
--- AUTO_INCREMENT de la tabla `libro_autor`
---
-ALTER TABLE `libro_autor`
-  MODIFY `idLibro_autor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idLibro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `pais`
@@ -825,31 +659,11 @@ ALTER TABLE `tematica`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `cliente`
---
-ALTER TABLE `cliente`
-  ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`idRol`) REFERENCES `roles` (`idRol`),
-  ADD CONSTRAINT `cliente_ibfk_2` FOREIGN KEY (`idPais`) REFERENCES `pais` (`idPais`);
-
---
--- Filtros para la tabla `compra`
---
-ALTER TABLE `compra`
-  ADD CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`idLibro`) REFERENCES `libro` (`idLibro`);
-
---
--- Filtros para la tabla `compras_cliente`
---
-ALTER TABLE `compras_cliente`
-  ADD CONSTRAINT `compras_cliente_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`),
-  ADD CONSTRAINT `compras_cliente_ibfk_2` FOREIGN KEY (`idCompra`) REFERENCES `compra` (`idCompra`);
 
 --
 -- Filtros para la tabla `foro`
@@ -867,14 +681,6 @@ ALTER TABLE `libro`
   ADD CONSTRAINT `libro_ibfk_2` FOREIGN KEY (`idTematica`) REFERENCES `tematica` (`idTematica`),
   ADD CONSTRAINT `libro_ibfk_3` FOREIGN KEY (`idPais`) REFERENCES `pais` (`idPais`),
   ADD CONSTRAINT `libro_ibfk_4` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`);
-
---
--- Filtros para la tabla `libro_autor`
---
-ALTER TABLE `libro_autor`
-  ADD CONSTRAINT `libro_autor_ibfk_1` FOREIGN KEY (`idLibro`) REFERENCES `libro` (`idLibro`),
-  ADD CONSTRAINT `libro_autor_ibfk_2` FOREIGN KEY (`idAutor`) REFERENCES `autor` (`idAutor`),
-  ADD CONSTRAINT `libro_autor_ibfk_3` FOREIGN KEY (`idLibro`) REFERENCES `libro` (`idLibro`);
 
 --
 -- Filtros para la tabla `usuario`

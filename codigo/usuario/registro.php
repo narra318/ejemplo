@@ -33,13 +33,22 @@ class Registro{
             $correo = htmlentities($_POST['correo']);
             $rol = 3;
             $usuario = htmlentities($_POST['usuario']);
+            $pais = "241";
 
             $sql = "INSERT INTO usuario(nombreUsuario, apellidoUsuario, correoUsuario, idRol, usuario, contrasenaUsuario, idEstado, idPais)
-            VALUES('" . $nombre . "','" . $apellido . "','" . $correo . "','" . $rol . "','" . $usuario. "','" . $password . "','1','" . $_POST['select1'] . "');";
+            VALUES('" . $nombre . "','" . $apellido . "','" . $correo . "','" . $rol . "','" . $usuario. "','" . $password . "','1','" . $pais . "');";
 
             if ($con->query($sql) === TRUE) {
-                $_SESSION["Status"]="Se ha creado el usuario";
-                header('Location: ../../vistas/usuario/registro.php');
+                $sql = "SELECT * FROM usuario WHERE (correoUsuario='".$correo."' OR usuario='".$usuario."') AND contrasenaUsuario='".$password."' AND (idRol='3' OR idRol='1') AND idEstado='1';";
+                $resultset = $con -> query($sql);
+
+                if($resultset -> num_rows > 0){
+                    while ($fila = $resultset -> fetch_assoc()){
+                        $_SESSION['Status'] = $fila['nombreUsuario'];
+                        $_SESSION['idUsuario'] = $fila['idUsuario'];
+                        header('Location: ../../vistas/usuario/logeado/');
+                    }
+                }
             } else {
                 $_SESSION["ErrorDB"] = "Error al crear en usuario, revise los campos";
                 header('Location: ../../vistas/usuario/registro.php');

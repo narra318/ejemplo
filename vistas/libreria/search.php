@@ -4,7 +4,7 @@
 <html lang="es">
 
 <head>
-    <title> Catálogo </title>
+    <title> Resultado de busqueda </title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Página de catálago de la libreria papiro">
@@ -52,8 +52,13 @@
         if (mysqli_num_rows($resulset) == 0) {
             echo "<h1> Resultados de la búsqueda </h1>";
             echo "<p>No se encontraron resultados para la búsqueda: " . $valor."</p>";
+            
+            echo '<div class="fixed-bottom">';
+                 footer();
+            echo '</div>';
             exit();
         }
+
         echo "<h1> Resultados de la búsqueda: &quot;$valor&quot; </h1>";
 
         while ($row =  $resulset->fetch_assoc()) { 
@@ -90,19 +95,15 @@
             <?php
         }
 
+        echo '</div>';
+
+        if (mysqli_num_rows($resulset) != 0) { footer(); }
+        
         $resulset->free();
+    } 
+    
     ?>
     
-
-    <?php
-
-        if (mysqli_num_rows($resulset) == 0) {  ?>
-            <div class="fixed-bottom">'
-                <?= footer(); ?>
-            </div>
-    <?php } else{ footer();}
-} ?>
-    </div>
 
     <script src="../../js/jquery-3.6.1.min.js"></script>
     <script src="../../js/bootstrap.bundle.min.js"> </script>

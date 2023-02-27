@@ -1,0 +1,33 @@
+@font-face 
+{
+    font-family: Velvet;
+    src: url("./fuentes/Red-Velvet.otf");
+}
+
+:root{
+    --primary: #26111D; 
+    --secondary: #B9B4BF;
+    --info: #88456a;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.containerLogin
+{
+    padding: 10em;
+    border-radius: 20px;
+    border: 1px solid var(--primary);
+    box-shadow: -5px -5px 15px var(--info);
+}
